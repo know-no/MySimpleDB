@@ -1,5 +1,7 @@
 package simpledb;
 
+import javafx.scene.control.Tab;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -51,7 +53,11 @@ public class Catalog {
      */
     public void addTable(DbFile file, String name, String pkeyField) {
         // some code goes here
-
+        //一个dbfile 返回 an ID uniquely identifying this HeapFile.
+        Table t = new Table(file, name, pkeyField);
+        Integer id = file.getId();
+        id2table.put(id, t);
+        name2table.put(name, t);
     }
 
     public void addTable(DbFile file, String name) {
@@ -70,12 +76,39 @@ public class Catalog {
     }
 
     /**
+     * gettable方法
+     */
+    private Table  getTable(String name) throws NoSuchElementException{
+        Table t = name2table.get(name);
+        if( null == t){
+            throw new NoSuchElementException("the table doesn't exist");
+        }
+        return t;
+    }
+    private  Table getTable(int id) throws  NoSuchElementException{
+        Table t = id2table.get(id);
+        if( null == t){
+            throw new NoSuchElementException("the table doesn't exist");
+        }
+        return t;
+    }
+    /**
      * Return the id of the table with a specified name,
      * @throws NoSuchElementException if the table doesn't exist
      */
     public int getTableId(String name) throws NoSuchElementException {
         // some code goes here
-        return 0;
+        Table t = getTable(name);
+
+        int id = -1;
+        for(Map.Entry<Integer, Table> entry : id2table.entrySet()){
+            if ( t == entry.getValue()){
+
+                id = entry.getKey().intValue();
+                break;
+            }
+        }
+        return id;
     }
 
     /**
@@ -86,7 +119,12 @@ public class Catalog {
      */
     public TupleDesc getTupleDesc(int tableid) throws NoSuchElementException {
         // some code goes here
-        return null;
+        Table t = id2table.get(tableid);
+        if( null == t){
+            throw new NoSuchElementException("the table doesn't exist");
+        }
+
+        return t.get_file().getTupleDesc();
     }
 
     /**
@@ -97,27 +135,41 @@ public class Catalog {
      */
     public DbFile getDbFile(int tableid) throws NoSuchElementException {
         // some code goes here
-        return null;
+        Table t = getTable(tableid);
+
+        return t.get_file();
+    }
+    public DbFile getDbFile(Table table) throws NoSuchElementException{
+        return table.get_file();
     }
 
     public String getPrimaryKey(int tableid) {
         // some code goes here
-        return null;
+        Table t = getTable(tableid);
+
+        return t.get_pkey();
     }
 
     public Iterator<Integer> tableIdIterator() {
         // some code goes here
-        return null;
+
+        return id2table.keySet().iterator();
     }
 
     public String getTableName(int id) {
         // some code goes here
-        return null;
+
+        Table t = getTable(id);
+
+        return t.get_name();
     }
     
     /** Delete all tables from the catalog */
     public void clear() {
         // some code goes here
+        // 这里的方法是仅仅清空这个类的tables呢 还是不仅如此，再删除本地的DbFile呢
+        name2table.clear();
+        id2table.clear();
     }
     
     /**

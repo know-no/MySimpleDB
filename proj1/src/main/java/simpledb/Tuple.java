@@ -12,10 +12,10 @@ import java.util.Iterator;
  */
 public class Tuple implements Serializable {
     // 保存这个行的数据列的描述
-    private TupleDesc tupleDesc = null;
-    private RecordId recordId = null;
+    private TupleDesc tupleDesc;
+    private RecordId recordId;
 //    private ArrayList<? extends Field> fields = new ArrayList<>();
-    private Field[] fields = null;
+    private Field[] fields;
     private static final long serialVersionUID = 1L;
 
     /**
@@ -115,10 +115,10 @@ public class Tuple implements Serializable {
     public Iterator<Field> fields()
     {
         // some code goes here
-        return new TupleIterator();
+        return new TupleFieldIterator();
     }
 
-    private class TupleIterator implements Iterator<Field>{
+    private class TupleFieldIterator implements Iterator<Field>{
 
         int pos = 0;
         public boolean hasNext() {
