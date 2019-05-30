@@ -85,7 +85,8 @@ public class Catalog {
         }
         return t;
     }
-    private  Table getTable(int id) throws  NoSuchElementException{
+
+    private Table getTable(int id) throws  NoSuchElementException{
         Table t = id2table.get(id);
         if( null == t){
             throw new NoSuchElementException("the table doesn't exist");

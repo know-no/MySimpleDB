@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="proj1" default="all">
+  
+  
+  <property file="proj1.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.klib"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.apk"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_biz.aqute.bnd:bndlib:2.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/biz/aQute/bnd/bndlib/2.1.0/bndlib-2.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_classworlds:classworlds:1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/classworlds/classworlds/1.1/classworlds-1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.jcraft:jsch:0.1.27.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/jcraft/jsch/0.1.27/jsch-0.1.27.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.jcraft:jzlib:1.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/jcraft/jzlib/1.0.7/jzlib-1.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-cli:commons-cli:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-cli/commons-cli/1.0/commons-cli-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_doctor:zql:1.0.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/doctor/Zql/1.0.0/Zql-1.0.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_jline:jline:0.9.94.classpath">
+    <pathelement location="${path.variable.maven_repository}/jline/jline/0.9.94/jline-0.9.94.jar"/>
+  </path>
+  
+  <path id="library.maven:_jtidy:jtidy:4aug2000r7-dev.classpath">
+    <pathelement location="${path.variable.maven_repository}/jtidy/jtidy/4aug2000r7-dev/jtidy-4aug2000r7-dev.jar"/>
+  </path>
+  
+  <path id="library.maven:_junit:junit:4.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.5/junit-4.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.felix:maven-bundle-plugin:2.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/felix/maven-bundle-plugin/2.4.0/maven-bundle-plugin-2.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.felix:org.apache.felix.bundlerepository:1.6.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/felix/org.apache.felix.bundlerepository/1.6.6/org.apache.felix.bundlerepository-1.6.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.doxia:doxia-sink-api:1.0-alpha-7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.reporting:maven-reporting-api:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/reporting/maven-reporting-api/2.0.7/maven-reporting-api-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.shared:maven-dependency-tree:2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/shared/maven-dependency-tree/2.1/maven-dependency-tree-2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.wagon:wagon-file:1.0-beta-2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-file/1.0-beta-2/wagon-file-1.0-beta-2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.wagon:wagon-http-lightweight:1.0-beta-2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-http-lightweight/1.0-beta-2/wagon-http-lightweight-1.0-beta-2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.wagon:wagon-http-shared:1.0-beta-2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-http-shared/1.0-beta-2/wagon-http-shared-1.0-beta-2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.wagon:wagon-provider-api:1.0-beta-2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-provider-api/1.0-beta-2/wagon-provider-api-1.0-beta-2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.wagon:wagon-ssh-common:1.0-beta-2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-ssh-common/1.0-beta-2/wagon-ssh-common-1.0-beta-2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.wagon:wagon-ssh-external:1.0-beta-2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-ssh-external/1.0-beta-2/wagon-ssh-external-1.0-beta-2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven.wagon:wagon-ssh:1.0-beta-2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-ssh/1.0-beta-2/wagon-ssh-1.0-beta-2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-archiver:2.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-archiver/2.5/maven-archiver-2.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-artifact-manager:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-artifact-manager/2.0.7/maven-artifact-manager-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-artifact:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-artifact/2.0.7/maven-artifact-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-core:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-core/2.0.7/maven-core-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-error-diagnostics:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-error-diagnostics/2.0.7/maven-error-diagnostics-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-model:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-model/2.0.7/maven-model-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-monitor:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-monitor/2.0.7/maven-monitor-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-plugin-api:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-plugin-api/2.0.7/maven-plugin-api-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-plugin-descriptor:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-plugin-descriptor/2.0.7/maven-plugin-descriptor-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-plugin-parameter-documenter:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-plugin-parameter-documenter/2.0.7/maven-plugin-parameter-documenter-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-plugin-registry:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-plugin-registry/2.0.7/maven-plugin-registry-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-profile:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-profile/2.0.7/maven-profile-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-project:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-project/2.0.7/maven-project-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-repository-metadata:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-repository-metadata/2.0.7/maven-repository-metadata-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.maven:maven-settings:2.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/maven/maven-settings/2.0.7/maven-settings-2.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.mina:mina-core:2.0.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/mina/mina-core/2.0.4/mina-core-2.0.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.mina:mina-filter-compression:2.0.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/mina/mina-filter-compression/2.0.4/mina-filter-compression-2.0.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.plexus:plexus-archiver:2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/plexus/plexus-archiver/2.1/plexus-archiver-2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.plexus:plexus-component-annotations:1.5.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.plexus:plexus-interactivity-api:1.0-alpha-4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.plexus:plexus-interpolation:1.15.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/plexus/plexus-interpolation/1.15/plexus-interpolation-1.15.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.plexus:plexus-io:2.0.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/plexus/plexus-io/2.0.2/plexus-io-2.0.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.plexus:plexus-utils:3.0.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/plexus/plexus-utils/3.0.10/plexus-utils-3.0.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.easymock:easymock:2.5.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/easymock/easymock/2.5.2/easymock-2.5.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.aether:aether-util:0.9.0.m2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.osgi:org.osgi.core:4.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-api:1.6.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_xml-apis:xml-apis:1.0.b2.classpath">
+    <pathelement location="${path.variable.maven_repository}/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_proj1.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.proj1" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.proj1" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

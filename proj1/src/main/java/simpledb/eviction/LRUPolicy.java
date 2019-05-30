@@ -31,70 +31,21 @@ public class LRUPolicy<k extends PageId, v extends Page> extends EvictionPolicy<
 
     // 是否可以用synchronized 呢
     public Page getPage(PageId key) {
-        System.out.println("xx");
+//        System.out.println("xx");
 
-        return null;
+        return pages.get(key);
     }
 
     public void putPage(PageId key, Page val) {
         pages.put((k) key,(v) val);
-        System.out.println("pp");
+//        System.out.println("pp");
     }
 
 
     public static void main(String[] args) {
         EvictionPolicy<PageId, Page> p = new LRUPolicy<PageId, Page>(5);
-//        p.getPage((PageId) new Fa());
-//        p.putPage(new Fa(), new Son());
-        p=(LRUPolicy)p;
-Fa f = new Fa();
-        p.getPage(f);
-    }
-}
-
-class Fa implements PageId {
-    public int[] serialize() {
-        return new int[0];
-    }
-
-    public int getTableId() {
-        return 0;
-    }
-
-    public int hashCode() {
-        return 0;
-    }
-
-    public boolean equals(Object o) {
-        return false;
-    }
-
-    public int pageNumber() {
-        return 0;
-    }
-}
-class Son implements Page {
-    public PageId getId() {
-        return null;
-    }
-
-    public TransactionId isDirty() {
-        return null;
-    }
-
-    public void markDirty(boolean dirty, TransactionId tid) {
-
-    }
-
-    public byte[] getPageData() {
-        return new byte[0];
-    }
-
-    public Page getBeforeImage() {
-        return null;
-    }
-
-    public void setBeforeImage() {
 
     }
 }
+
+

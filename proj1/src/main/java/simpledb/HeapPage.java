@@ -53,13 +53,14 @@ public class HeapPage implements Page {
         DataInputStream dis = new DataInputStream(new ByteArrayInputStream(data));
 
         // allocate and read the header slots of this page
-        header = new byte[getHeaderSize()];
+        header = new byte[getHeaderSize() ];
         for (int i=0; i<header.length; i++)
             header[i] = dis.readByte();
-
+//        System.out.println(java.util.Arrays.toString(header) +"      header :" + header.length);
         try{
             // allocate and read the actual records of this page
             tuples = new Tuple[numSlots];
+//            System.out.println("numSlots" + numSlots);
             for (int i=0; i<tuples.length; i++)
                 tuples[i] = readNextTuple(dis,i);
         }catch(NoSuchElementException e){
@@ -89,7 +90,8 @@ public class HeapPage implements Page {
 
         // some code goes here
         // 为了节约空间 ， 用了类似于bitmap排序的那个方法，用每一位表示一个slot是否被使用
-        return (int)ceil(this.numSlots/8);
+        // !! 这里必须是8.0 如果是8 则 15 / 8 = 1, 15/8.0 = 1.7 ceil(1.7)=2
+        return (int)ceil(this.numSlots/8.0);
 
     }
 
@@ -127,6 +129,7 @@ public class HeapPage implements Page {
         // if associated bit is not set, read forward to the next tuple, and
         // return null.
         if (!isSlotUsed(slotId)) {
+
             for (int i=0; i<td.getSize(); i++) {
                 try {
                     dis.readByte();
@@ -306,10 +309,12 @@ public class HeapPage implements Page {
             throw new IllegalArgumentException("Wrong arguments");
         }
         boolean flag = false;
+
         int whichByte = i / 8 ;
         int whichBit = i % 8 ;
         if(whichByte >= this.header.length){
-            throw new IllegalArgumentException("Wrong arguments");
+            throw new IllegalArgumentException("Wrong arguments" + whichByte + "  " + whichBit);
+//            return true;
         }
         /**
          *使用移位判断这个位置是否被占用，若是1，移位之后整个数是负数，若是0，整个数是正数 !! (byte)进行强转 否则是int，变成正数了,
@@ -324,7 +329,6 @@ public class HeapPage implements Page {
          *
          * 或者转化为BigInteger 然后用testbit的方法
          */
-
 
         return ((header[whichByte] >> (  whichBit)) & 1) == 1;
 
@@ -350,7 +354,7 @@ public class HeapPage implements Page {
         return new TupleIteratorInHeapPage();
     }
 
-    private class TupleIteratorInHeapPage implements Iterator<Tuple> {
+    class TupleIteratorInHeapPage implements Iterator<Tuple> {
         int index = 0;
         public boolean hasNext() {
             if(index < numSlots){

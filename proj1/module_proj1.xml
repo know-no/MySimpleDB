@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_proj1" default="compile.module.proj1">
+  <dirname property="module.proj1.basedir" file="${ant.file.module_proj1}"/>
+  
+  <property name="module.jdk.home.proj1" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.proj1" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.proj1" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.proj1" value="-encoding UTF-8 -source 7 -target 7 ${compiler.args}"/>
+  
+  <property name="proj1.output.dir" value="${module.proj1.basedir}/target/classes"/>
+  <property name="proj1.testoutput.dir" value="${module.proj1.basedir}/target/test-classes"/>
+  
+  <path id="proj1.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="proj1.module.production.classpath">
+    <path refid="${module.jdk.classpath.proj1}"/>
+    <path refid="library.maven:_doctor:zql:1.0.0.classpath"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_com.jcraft:jzlib:1.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.felix:maven-bundle-plugin:2.4.0.classpath"/>
+    <path refid="library.maven:_biz.aqute.bnd:bndlib:2.1.0.classpath"/>
+    <path refid="library.maven:_org.osgi:org.osgi.core:4.2.0.classpath"/>
+    <path refid="library.maven:_org.apache.felix:org.apache.felix.bundlerepository:1.6.6.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-core:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-settings:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-parameter-documenter:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.reporting:maven-reporting-api:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.doxia:doxia-sink-api:1.0-alpha-7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-profile:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-model:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-artifact:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-provider-api:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-repository-metadata:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-error-diagnostics:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-project:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-registry:2.0.7.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.0.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-api:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-descriptor:2.0.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-interactivity-api:1.0-alpha-4.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-artifact-manager:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-monitor:2.0.7.classpath"/>
+    <path refid="library.maven:_classworlds:classworlds:1.1.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-archiver:2.5.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-archiver:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-io:2.0.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-interpolation:1.15.classpath"/>
+    <path refid="library.maven:_org.apache.maven.shared:maven-dependency-tree:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-component-annotations:1.5.5.classpath"/>
+    <path refid="library.maven:_org.eclipse.aether:aether-util:0.9.0.m2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-utils:3.0.10.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.1.classpath"/>
+  </path>
+  
+  <path id="proj1.runtime.production.module.classpath">
+    <pathelement location="${proj1.output.dir}"/>
+    <path refid="library.maven:_doctor:zql:1.0.0.classpath"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_com.jcraft:jzlib:1.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.felix:maven-bundle-plugin:2.4.0.classpath"/>
+    <path refid="library.maven:_biz.aqute.bnd:bndlib:2.1.0.classpath"/>
+    <path refid="library.maven:_org.osgi:org.osgi.core:4.2.0.classpath"/>
+    <path refid="library.maven:_org.apache.felix:org.apache.felix.bundlerepository:1.6.6.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-core:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-settings:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-file:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-parameter-documenter:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-http-lightweight:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-http-shared:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_jtidy:jtidy:4aug2000r7-dev.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.apache.maven.reporting:maven-reporting-api:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.doxia:doxia-sink-api:1.0-alpha-7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-profile:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-model:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-artifact:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-provider-api:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-repository-metadata:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-error-diagnostics:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-project:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-registry:2.0.7.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.0.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-api:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-ssh-external:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-ssh-common:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-descriptor:2.0.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-interactivity-api:1.0-alpha-4.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-artifact-manager:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-monitor:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-ssh:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_com.jcraft:jsch:0.1.27.classpath"/>
+    <path refid="library.maven:_classworlds:classworlds:1.1.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-archiver:2.5.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-archiver:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-io:2.0.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-interpolation:1.15.classpath"/>
+    <path refid="library.maven:_org.apache.maven.shared:maven-dependency-tree:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-component-annotations:1.5.5.classpath"/>
+    <path refid="library.maven:_org.eclipse.aether:aether-util:0.9.0.m2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-utils:3.0.10.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.1.classpath"/>
+  </path>
+  
+  <path id="proj1.module.classpath">
+    <path refid="${module.jdk.classpath.proj1}"/>
+    <pathelement location="${proj1.output.dir}"/>
+    <path refid="library.maven:_doctor:zql:1.0.0.classpath"/>
+    <path refid="library.maven:_junit:junit:4.5.classpath"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_com.jcraft:jzlib:1.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-core:2.0.4.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-filter-compression:2.0.4.classpath"/>
+    <path refid="library.maven:_org.easymock:easymock:2.5.2.classpath"/>
+    <path refid="library.maven:_org.apache.felix:maven-bundle-plugin:2.4.0.classpath"/>
+    <path refid="library.maven:_biz.aqute.bnd:bndlib:2.1.0.classpath"/>
+    <path refid="library.maven:_org.osgi:org.osgi.core:4.2.0.classpath"/>
+    <path refid="library.maven:_org.apache.felix:org.apache.felix.bundlerepository:1.6.6.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-core:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-settings:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-file:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-parameter-documenter:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-http-lightweight:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-http-shared:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_jtidy:jtidy:4aug2000r7-dev.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.apache.maven.reporting:maven-reporting-api:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.doxia:doxia-sink-api:1.0-alpha-7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-profile:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-model:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-artifact:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-provider-api:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-repository-metadata:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-error-diagnostics:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-project:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-registry:2.0.7.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.0.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-api:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-ssh-external:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-ssh-common:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-descriptor:2.0.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-interactivity-api:1.0-alpha-4.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-artifact-manager:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-monitor:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-ssh:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_com.jcraft:jsch:0.1.27.classpath"/>
+    <path refid="library.maven:_classworlds:classworlds:1.1.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-archiver:2.5.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-archiver:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-io:2.0.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-interpolation:1.15.classpath"/>
+    <path refid="library.maven:_org.apache.maven.shared:maven-dependency-tree:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-component-annotations:1.5.5.classpath"/>
+    <path refid="library.maven:_org.eclipse.aether:aether-util:0.9.0.m2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-utils:3.0.10.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.1.classpath"/>
+  </path>
+  
+  <path id="proj1.runtime.module.classpath">
+    <pathelement location="${proj1.testoutput.dir}"/>
+    <pathelement location="${proj1.output.dir}"/>
+    <path refid="library.maven:_doctor:zql:1.0.0.classpath"/>
+    <path refid="library.maven:_junit:junit:4.5.classpath"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_com.jcraft:jzlib:1.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-core:2.0.4.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-filter-compression:2.0.4.classpath"/>
+    <path refid="library.maven:_org.easymock:easymock:2.5.2.classpath"/>
+    <path refid="library.maven:_org.apache.felix:maven-bundle-plugin:2.4.0.classpath"/>
+    <path refid="library.maven:_biz.aqute.bnd:bndlib:2.1.0.classpath"/>
+    <path refid="library.maven:_org.osgi:org.osgi.core:4.2.0.classpath"/>
+    <path refid="library.maven:_org.apache.felix:org.apache.felix.bundlerepository:1.6.6.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-core:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-settings:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-file:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-parameter-documenter:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-http-lightweight:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-http-shared:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_jtidy:jtidy:4aug2000r7-dev.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.apache.maven.reporting:maven-reporting-api:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.doxia:doxia-sink-api:1.0-alpha-7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-profile:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-model:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-artifact:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-provider-api:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-repository-metadata:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-error-diagnostics:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-project:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-registry:2.0.7.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.0.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-api:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-ssh-external:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-ssh-common:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-plugin-descriptor:2.0.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-interactivity-api:1.0-alpha-4.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-artifact-manager:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-monitor:2.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.maven.wagon:wagon-ssh:1.0-beta-2.classpath"/>
+    <path refid="library.maven:_com.jcraft:jsch:0.1.27.classpath"/>
+    <path refid="library.maven:_classworlds:classworlds:1.1.classpath"/>
+    <path refid="library.maven:_org.apache.maven:maven-archiver:2.5.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-archiver:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-io:2.0.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-interpolation:1.15.classpath"/>
+    <path refid="library.maven:_org.apache.maven.shared:maven-dependency-tree:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-component-annotations:1.5.5.classpath"/>
+    <path refid="library.maven:_org.eclipse.aether:aether-util:0.9.0.m2.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-utils:3.0.10.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.proj1">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.proj1">
+    <patternset refid="excluded.from.module.proj1"/>
+  </patternset>
+  
+  <path id="proj1.module.sourcepath">
+    <dirset dir="${module.proj1.basedir}">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="proj1.module.test.sourcepath">
+    <dirset dir="${module.proj1.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.proj1" depends="compile.module.proj1.production,compile.module.proj1.tests" description="Compile module proj1"/>
+  
+  <target name="compile.module.proj1.production" depends="register.custom.compilers" description="Compile module proj1; production classes">
+    <mkdir dir="${proj1.output.dir}"/>
+    <javac2 destdir="${proj1.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.proj1}/javac">
+      <compilerarg line="${compiler.args.proj1}"/>
+      <bootclasspath refid="proj1.module.bootclasspath"/>
+      <classpath refid="proj1.module.production.classpath"/>
+      <src refid="proj1.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.proj1"/>
+    </javac2>
+    
+    <copy todir="${proj1.output.dir}">
+      <fileset dir="${module.proj1.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.proj1.tests" depends="register.custom.compilers,compile.module.proj1.production" description="compile module proj1; test classes" unless="skip.tests">
+    <mkdir dir="${proj1.testoutput.dir}"/>
+    <javac2 destdir="${proj1.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.proj1}/javac">
+      <compilerarg line="${compiler.args.proj1}"/>
+      <bootclasspath refid="proj1.module.bootclasspath"/>
+      <classpath refid="proj1.module.classpath"/>
+      <src refid="proj1.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.proj1"/>
+    </javac2>
+    
+    <copy todir="${proj1.testoutput.dir}">
+      <fileset dir="${module.proj1.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.proj1" description="cleanup module">
+    <delete dir="${proj1.output.dir}"/>
+    <delete dir="${proj1.testoutput.dir}"/>
+  </target>
+</project>

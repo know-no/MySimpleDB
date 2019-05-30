@@ -12,6 +12,7 @@ public class HeapPageId implements PageId {
      * @param tableId The table that is being referenced
      * @param pgNo The page number in that table.
      */
+    // pgNo从0开始, 可以在test中看到
     public HeapPageId(int tableId, int pgNo) {
         // some code goes here
         this.tableId = tableId;
@@ -32,6 +33,7 @@ public class HeapPageId implements PageId {
      */
     public int pageNumber() {
         // some code goes here
+
         return this.pgNo;
     }
 
